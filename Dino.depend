@@ -1,0 +1,36 @@
+# depslib dependency file v1.0
+1714847666 source:e:\linh\uet\ltnc\dino\main.cpp
+	<SDL.h>
+	<SDL_image.h>
+	<stdio.h>
+	<string>
+	"define.h"
+	"graphics.h"
+	"texture.h"
+
+1714841437 e:\linh\uet\ltnc\dino\define.h
+	<SDL.h>
+	<SDL_image.h>
+	<stdio.h>
+
+1714822727 e:\linh\uet\ltnc\dino\graphics.h
+	<SDL.h>
+	<SDL_image.h>
+	<stdio.h>
+	<bits/stdc++.h>
+	"define.h"
+
+1714822245 source:e:\linh\uet\ltnc\dino\graphics.cpp
+	"define.h"
+	"graphics.h"
+	<bits/stdc++.h>
+
+1714886555 source:e:\linh\uet\ltnc\dino\texture.cpp
+	"texture.h"
+	<bits/stdc++.h>
+
+1714886555 e:\linh\uet\ltnc\dino\texture.h
+	<bits/stdc++.h>
+	"define.h"
+	"graphics.h"
+
