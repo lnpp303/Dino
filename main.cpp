@@ -42,12 +42,13 @@ int main (int argc, char* argv[]) {
                             {
                                 scolingOffset = 0;
                             }
-
                             background.render(scolingOffset,0, graphics.renderer);
                             background.render(scolingOffset+background.getWidth(),0, graphics.renderer);
 
                             character.renderClip(350, 370, graphics.renderer,&character.clip[i] );
+
                             SDL_RenderPresent(graphics.renderer);
+
                             SDL_Delay(57);
                             if (i==14) i=0;
                         }
