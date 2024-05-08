@@ -34,3 +34,39 @@
 	"define.h"
 	"graphics.h"
 
+1715179735 source:e:\linh\uet\ltnc\dino\dino\graphics.cpp
+	"define.h"
+	"graphics.h"
+	<bits/stdc++.h>
+
+1715179735 e:\linh\uet\ltnc\dino\dino\define.h
+	<SDL.h>
+	<SDL_image.h>
+	<stdio.h>
+
+1715179735 e:\linh\uet\ltnc\dino\dino\graphics.h
+	<SDL.h>
+	<SDL_image.h>
+	<stdio.h>
+	<bits/stdc++.h>
+	"define.h"
+
+1715159233 source:e:\linh\uet\ltnc\dino\dino\main.cpp
+	<SDL.h>
+	<SDL_image.h>
+	<stdio.h>
+	<string>
+	"define.h"
+	"graphics.h"
+	"texture.h"
+	"scolling.h"
+
+1715179735 e:\linh\uet\ltnc\dino\dino\texture.h
+	<bits/stdc++.h>
+	"define.h"
+	"graphics.h"
+
+1715179735 source:e:\linh\uet\ltnc\dino\dino\texture.cpp
+	"texture.h"
+	<bits/stdc++.h>
+

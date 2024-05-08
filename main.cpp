@@ -6,40 +6,116 @@
 #include "define.h"
 #include "graphics.h"
 #include "texture.h"
+#include "scolling.h"
 
 using namespace std;
 
 void waitUntilKeyPress () {
-    SDL_Event e; bool quit = false;
-        while (quit==false) {
-            while ( SDL_PollEvent(&e) ) {
-                if (e.type == SDL_QUIT) quit=true;
+    SDL_Event e;
+        while (true) {
+        while ( SDL_PollEvent(&e)!=0 ) {
+                switch (e.type ){
+                    case SDL_QUIT: exit(0);
+                    break;
+                }
             }
         }
 }
 int main (int argc, char* argv[]) {
     Graphics graphics;
+
     Texture background;
     Texture character;
 
+    int scolingOffset=0;
+    bool isRunning=true; SDL_Event e;
     if (!graphics.init()) printf ("Failed to intialize!");
     else {
-        SDL_RenderClear(graphics.renderer);
-        SDL_SetRenderDrawColor( graphics.renderer, 0xff, 0xff, 0xff, 0xff );
-        if (background.loadMedia("background.png", graphics.renderer)) {
-            background.render(0,0, graphics.renderer);
-        }
+        if (background.loadMedia("background.png", graphics.renderer))
+            {
+            if (character.loadClip("Dino.png", graphics.renderer)){
 
-        if (character.loadClip("Dino.png", graphics.renderer)){
-            for (int i=0; i<24; i++) {
-                character.renderClip(350, 370, graphics.renderer,&character.clip[i] );
+
+                     while (isRunning)
+                    {
+
+                        while(SDL_PollEvent(&e)!=0)
+                        {
+                            if (e.type == SDL_QUIT)
+                            {
+                                isRunning = false;
+                            }
+                        }
+                        --scolingOffset;
+                        if (scolingOffset < -background.getWidth())
+                        {
+                            scolingOffset = 0;
+                        }
+                        background.render(scolingOffset,0, graphics.renderer);
+                        background.render(scolingOffset+background.getWidth(),0, graphics.renderer);
+                    for (int i=0; i<15; i++) {
+                    SDL_RenderClear(graphics.renderer);
+                    character.renderClip(350, 370, graphics.renderer,&character.clip[i] );
+                    SDL_RenderPresent(graphics.renderer);
+                    SDL_Delay(5);
+                    if (i==14) i=0;
+                    }
+                }
 
             }
         }
-    //Render finished texture to front screen
-        SDL_RenderPresent(graphics.renderer);
-        waitUntilKeyPress();
     }
+
+   /* bool isRunning = true;
+    SDL_Event e;
+    if (!graphics.init())
+    {
+        printf ("Failed to intialize!");
+        return -1;
+    }
+    if (!background.loadMedia("background.png", graphics.renderer))
+    {
+        return -1;
+    }
+    if (!character.loadClip("Dino.png", graphics.renderer))
+        {
+            return -1;
+        }
+
+            for (int i=0; i<15; i++)
+            {
+            SDL_RenderClear(graphics.renderer);
+            character.renderClip(350, 370, graphics.renderer,&character.clip[i] );
+            if (i==14) i=0;
+    while (isRunning)
+    {
+        while(SDL_PollEvent(&e)!=0)
+        {
+            if (e.type == SDL_QUIT)
+            {
+                isRunning = false;
+            }
+        }
+
+
+
+            --scolingOffset;
+            if (scolingOffset < -background.getWidth())
+            {
+                scolingOffset = 0;
+            }
+
+        background.render(scolingOffset,0, graphics.renderer);
+        background.render(scolingOffset+background.getWidth(),0, graphics.renderer);
+
+        SDL_RenderPresent(graphics.renderer);
+
+        SDL_Delay(5);
+        }
+    }
+*/
+    //waitUntilKeyPress();
     graphics.close();
+    background.free();
     return 0;
 }
