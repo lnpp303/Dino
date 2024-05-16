@@ -28,6 +28,9 @@ void Graphics::close () {
     SDL_DestroyTexture(texture);
     texture = NULL;
 
+    TTF_CloseFont( font );
+	font = NULL;
+
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
     renderer=NULL;
@@ -35,6 +38,7 @@ void Graphics::close () {
 
     IMG_Quit();
     SDL_Quit();
+    TTF_Quit();
 }
 
 

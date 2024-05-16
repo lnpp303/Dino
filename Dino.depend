@@ -34,38 +34,102 @@
 	"define.h"
 	"graphics.h"
 
-1715179735 source:e:\linh\uet\ltnc\dino\dino\graphics.cpp
+1715506486 source:e:\linh\uet\ltnc\dino\dino\graphics.cpp
 	"define.h"
 	"graphics.h"
 	<bits/stdc++.h>
 
-1715179735 e:\linh\uet\ltnc\dino\dino\define.h
+1715732167 e:\linh\uet\ltnc\dino\dino\define.h
+	<vector>
+	<iostream>
+	<string>
 	<SDL.h>
 	<SDL_image.h>
+	<SDL_ttf.h>
+	<SDL_mixer.h>
 	<stdio.h>
 
-1715179735 e:\linh\uet\ltnc\dino\dino\graphics.h
+1715631909 e:\linh\uet\ltnc\dino\dino\graphics.h
 	<SDL.h>
 	<SDL_image.h>
+	<SDL_ttf.h>
+	<SDL_mixer.h>
 	<stdio.h>
 	<bits/stdc++.h>
 	"define.h"
+	"texture.h"
 
-1715180574 source:e:\linh\uet\ltnc\dino\dino\main.cpp
+1715860270 source:e:\linh\uet\ltnc\dino\dino\main.cpp
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_ttf.h>
+	<SDL_mixer.h>
+	<stdio.h>
+	<string>
+	<bits/stdc++.h>
+	"define.h"
+	"graphics.h"
+	"texture.h"
+	"dino.h"
+	"obstacle.h"
+
+1715628794 e:\linh\uet\ltnc\dino\dino\texture.h
+	<SDL_ttf.h>
+	<bits/stdc++.h>
+	"define.h"
+
+1715695345 source:e:\linh\uet\ltnc\dino\dino\texture.cpp
+	"texture.h"
+	<bits/stdc++.h>
+
+1715360437 source:e:\linh\uet\ltnc\thu.cpp
 	<SDL.h>
 	<SDL_image.h>
 	<stdio.h>
 	<string>
+
+1715854864 e:\linh\uet\ltnc\dino\dino\dino.h
 	"define.h"
 	"graphics.h"
 	"texture.h"
+	"obstacle.h"
 
-1715179735 e:\linh\uet\ltnc\dino\dino\texture.h
+1715854883 source:e:\linh\uet\ltnc\dino\dino\dino.cpp
+	"dino.h"
+
+1715861264 source:e:\linh\uet\ltnc\dino\dino\obstacle.cpp
+	"obstacle.h"
 	<bits/stdc++.h>
+	<cstdlib>
+
+1715853826 e:\linh\uet\ltnc\dino\dino\obstacle.h
 	"define.h"
 	"graphics.h"
-
-1715179735 source:e:\linh\uet\ltnc\dino\dino\texture.cpp
 	"texture.h"
+	"dino.h"
+	<bits/stdc++.h>
+
+1715588884 source:e:\linh\uet\ltnc\dino\dino\game.cpp
+	"game.h"
+	<bits/stdc++.h>
+
+1715526509 e:\linh\uet\ltnc\dino\dino\game.h
+	"define.h"
+	"graphics.h"
+	"texture.h"
+	"dino.h"
+	"obstacle.h"
+	<bits/stdc++.h>
+
+1715763718 e:\linh\uet\ltnc\dino\dino\menu.h
+	"define.h"
+	"graphics.h"
+	"texture.h"
+	"dino.h"
+	"obstacle.h"
+	<bits/stdc++.h>
+
+1715763881 source:e:\linh\uet\ltnc\dino\dino\menu.cpp
+	"menu.h"
 	<bits/stdc++.h>
 

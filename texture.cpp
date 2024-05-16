@@ -9,8 +9,31 @@ Texture::Texture() {
     h_texture=0;
 }
 Texture::~Texture() {
-    free();
+
 }
+
+bool Texture::init(SDL_Renderer* renderer)
+{
+    bool success = true;
+    SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF );
+
+    //Initialize PNG loading
+    int imgFlags = IMG_INIT_PNG;
+    if( !( IMG_Init( imgFlags ) & imgFlags ) )
+    {
+        printf( "SDL_image could not initialize! SDL_image Error: %s\n", IMG_GetError() );
+        success = false;
+    }
+
+    //Initialize SDL_ttf
+    if( TTF_Init() == -1 )
+    {
+        printf( "SDL_ttf could not initialize! SDL_ttf Error: %s\n", TTF_GetError() );
+        success = false;
+    }
+    return success;
+}
+
 void Texture::free() {
     if (texture!=NULL) {
         SDL_DestroyTexture(texture);
@@ -19,6 +42,8 @@ void Texture::free() {
         h_texture=0;
     }
 }
+
+//texture
 bool Texture::loadFromFile(string path, SDL_Renderer* renderer) {
     //deallocate preexisting texture
     free();
@@ -38,6 +63,7 @@ bool Texture::loadFromFile(string path, SDL_Renderer* renderer) {
         else {
                 w_texture=surface->w;
                 h_texture=surface->h;
+
         }
         SDL_FreeSurface(surface);
     }
@@ -45,11 +71,7 @@ bool Texture::loadFromFile(string path, SDL_Renderer* renderer) {
     return texture!=NULL;
 
 }
-bool Texture::loadMedia(string path, SDL_Renderer* renderer) {
 
-    if (!loadFromFile(path, renderer)) return false;
-    return true;
-}
 void Texture::render (int x, int y, SDL_Renderer* renderer) {
     SDL_Rect renderQuad = {x, y, w_texture, h_texture};
     SDL_RenderCopy(renderer, texture, NULL , &renderQuad);
@@ -60,36 +82,134 @@ void Texture::renderClip(int x, int y, SDL_Renderer* renderer, SDL_Rect* clip){
 	{
 		renderQuad.w = clip->w;
 		renderQuad.h = clip->h;
+
 	}
 	SDL_RenderCopy(renderer, texture, clip, &renderQuad );
 }
-bool Texture::loadClip(string path, SDL_Renderer* renderer) {
-    if (!loadFromFile(path, renderer)) return false;
-    else {
-        clip[0].x = 0; clip[0].y=0; clip[0].w=144; clip[0].h=144;
-        clip[1].x = 144; clip[1].y=0; clip[1].w=144; clip[1].h=144;
-        clip[2].x = 2*144; clip[2].y=0; clip[2].w=144; clip[2].h=144;
-        clip[3].x = 3*144; clip[3].y=0; clip[3].w=144; clip[3].h=144;
-        clip[4].x = 4*144; clip[4].y=0; clip[4].w=144; clip[4].h=144;
-
-        clip[5].x = 5*144; clip[5].y=0; clip[5].w=144; clip[5].h=144;
-        clip[6].x = 6*144; clip[6].y=0; clip[6].w=144; clip[6].h=144;
-        clip[7].x = 7*144; clip[7].y=0; clip[7].w=144; clip[7].h=144;
-        clip[8].x = 8*144; clip[8].y=0; clip[8].w=144; clip[8].h=144;
-        clip[9].x = 9*144; clip[9].y=0; clip[9].w=144; clip[9].h=144;
-
-        clip[10].x = 10*144; clip[10].y=0; clip[10].w=144; clip[10].h=144;
-        clip[11].x = 11*144; clip[11].y=0; clip[11].w=144; clip[11].h=144;
-        clip[12].x = 12*144; clip[12].y=0; clip[12].w=144; clip[12].h=144;
-        clip[13].x = 13*144; clip[13].y=0; clip[13].w=144; clip[13].h=144;
-        clip[14].x = 14*144; clip[14].y=0; clip[14].w=144; clip[14].h=144;
+//text
+void Texture::setColor(int type)
+{
+    if (type == RED)
+    {
+        SDL_Color color = {255, 0, 0};
+        text_color = color;
     }
-    return true;
+    if (type == WHITE)
+    {
+        SDL_Color color = {255, 255, 255};
+        text_color = color;
+    }
+    if (type == BLACK)
+    {
+        SDL_Color color = {0, 0, 0};
+        text_color = color;
+    }
+}
+bool Texture::loadText1 ( SDL_Renderer* renderer)
+{
+    font = TTF_OpenFont( "ChangaOne-Regular.ttf", 30 );
+	if( font == NULL )
+	{
+		printf( "Failed to load font! SDL_ttf Error: %s\n", TTF_GetError() );
+
+	}
+	else
+	{
+	    //Render text
+		free();
+		//Render text surface
+        SDL_Surface* textSurface = TTF_RenderText_Solid( font, str_val.c_str(), text_color );
+
+        if( textSurface == NULL )
+        {
+            printf( "Unable to render text surface! SDL_ttf Error: %s\n", TTF_GetError() );
+        }
+        else
+        {
+            //Create texture from surface pixels
+            texture = SDL_CreateTextureFromSurface( renderer, textSurface );
+
+            if( texture == NULL )
+            {
+                printf( "Unable to create texture from rendered text! SDL Error: %s\n", SDL_GetError() );
+            }
+            else
+            {
+                //Get image dimensions
+                w_texture = textSurface->w;
+                h_texture = textSurface->h;
+
+
+            }
+
+                //Get rid of old surface
+                SDL_FreeSurface( textSurface );
+        }
+
+	}
+    return texture!=NULL;
+
+}
+void Texture::createText1 (int x, int y, SDL_Renderer* renderer)
+{
+    if (loadText1(renderer))
+    {
+
+        render(x, y, renderer);
+    }
 }
 
+bool Texture::loadText2 ( SDL_Renderer* renderer)
+{
+    font = TTF_OpenFont( "ChangaOne-Regular.ttf", 80 );
+	if( font == NULL )
+	{
+		printf( "Failed to load font! SDL_ttf Error: %s\n", TTF_GetError() );
 
+	}
+	else
+	{
+	    //Render text
+		free();
+		//Render text surface
+        SDL_Surface* textSurface = TTF_RenderText_Solid( font, str_val.c_str(), text_color );
 
+        if( textSurface == NULL )
+        {
+            printf( "Unable to render text surface! SDL_ttf Error: %s\n", TTF_GetError() );
+        }
+        else
+        {
+            //Create texture from surface pixels
+            texture = SDL_CreateTextureFromSurface( renderer, textSurface );
 
+            if( texture == NULL )
+            {
+                printf( "Unable to create texture from rendered text! SDL Error: %s\n", SDL_GetError() );
+            }
+            else
+            {
+                //Get image dimensions
+                w_texture = textSurface->w;
+                h_texture = textSurface->h;
+            }
+
+                //Get rid of old surface
+                SDL_FreeSurface( textSurface );
+        }
+
+	}
+    return texture!=NULL;
+
+}
+void Texture::createText2 (int x, int y, SDL_Renderer* renderer)
+{
+    if (loadText2(renderer))
+    {
+
+        render(x, y, renderer);
+    }
+}
 
 
 
