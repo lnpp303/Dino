@@ -3,7 +3,6 @@
 
 #pragma once
 
-#include "define.h"
 #include "graphics.h"
 #include "texture.h"
 #include "dino.h"
@@ -22,7 +21,6 @@ public:
     void renderMenu (SDL_Renderer* renderer);
     void close();
 private:
-    SDL_Surface* surface_menu;
     SDL_Texture* texture;
 
     int width_0, height_0;

@@ -4,8 +4,8 @@
 #pragma once
 #include <SDL_ttf.h>
 #include <bits/stdc++.h>
-#include "define.h"
-//#include "graphics.h"
+
+#include "graphics.h"
 
 using namespace std;
 
@@ -27,22 +27,13 @@ public:
     int getHeight() {return h_texture;}
     void renderClip(int x, int y, SDL_Renderer* renderer, SDL_Rect* clip);
 
-    bool loadText1 ( SDL_Renderer* renderer);
-    bool loadText2 ( SDL_Renderer* renderer);
-    //bool loadFromRenderedText (SDL_Renderer* renderer);
+    bool loadText_S ( SDL_Renderer* renderer);
+    bool loadText_L ( SDL_Renderer* renderer);
 
     void setText(string text) {str_val=text;};
     void setColor(int type);
-    void createText1 (int x, int y, SDL_Renderer* renderer);
-    void createText2 (int x, int y, SDL_Renderer* renderer);
-
-
-    enum TextColor
-    {
-        RED = 0,
-        BLACK = 1,
-        WHITE = 2,
-    };
+    void createText_S (int x, int y, SDL_Renderer* renderer);
+    void createText_L (int x, int y, SDL_Renderer* renderer);
 
 private:
     SDL_Texture* texture;
@@ -58,6 +49,13 @@ private:
 
     string str_val;
     SDL_Color text_color;
+
+enum TextColor
+    {
+        RED = 0,
+        BLACK = 1,
+        WHITE = 2,
+    };
 
 };
 

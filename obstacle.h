@@ -3,7 +3,7 @@
 
 #pragma once
 
-#include "define.h"
+
 #include "graphics.h"
 #include "texture.h"
 #include "dino.h"
@@ -13,23 +13,19 @@ using namespace std;
 
 class Obs : Texture {
 public:
-    Obs();
+    Obs(int x, int y);
     ~Obs();
     bool loadFromFile(string path, SDL_Renderer* renderer);
-    void handleMove ();
-    void handleInput (SDL_Event* event);
-    void update();
-    float get_x() {return obs_x;};
-    float get_y() {return obs_y;};
+
+    float getX() {return obs_x;};
+    float get() {return obs_y;};
 
     SDL_Rect getCollision() const {return collision;};
-    void render(SDL_Renderer* renderer);
+    void render(SDL_Renderer* renderer, int camera_x);
 
 private:
     float obs_x;
     float obs_y;
-
-    float x_val = 0;
 
     SDL_Rect collision;
 

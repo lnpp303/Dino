@@ -9,12 +9,15 @@
 #include <SDL_mixer.h>
 #include <stdio.h>
 #include <bits/stdc++.h>
-#include "define.h"
-#include "texture.h"
 
 using namespace std;
-struct Graphics : Texture
+
+const int SCREEN_WIDTH = 1024;
+const int SCREEN_HEIGHT = 512;
+
+class Graphics
 {
+public:
 
     SDL_Window* window = NULL;
     SDL_Renderer* renderer = NULL;

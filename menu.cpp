@@ -4,7 +4,7 @@
 using namespace std;
 
 
-Menu::Menu()
+/*Menu::Menu()
 {
     item_pos[2].x=320;
     item_pos[2].y=160;
@@ -34,7 +34,7 @@ void Menu::renderMenu (SDL_Renderer* renderer)
 
     /*Texture button2;
     button2.loadFromFile("button.png", renderer);
-    button2.render(400, 180, renderer);*/
+    button2.render(400, 180, renderer);
 
     text_menu[0].setText("Play");
     text_menu[0].setColor(BLACK);
@@ -91,7 +91,7 @@ int Menu::showMenu(SDL_Renderer* renderer)
         return -1;
     }
 
-    bool selected[menuItem] = {0, 0 };
+    bool selected[menuItem] = {0, 0 , 0};
 
     SDL_Event m_event; int m_x=0; int m_y=0;
 
@@ -156,3 +156,4 @@ int Menu::showMenu(SDL_Renderer* renderer)
     }
 
 }
+*/

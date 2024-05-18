@@ -105,7 +105,7 @@ void Texture::setColor(int type)
         text_color = color;
     }
 }
-bool Texture::loadText1 ( SDL_Renderer* renderer)
+bool Texture::loadText_S ( SDL_Renderer* renderer)
 {
     font = TTF_OpenFont( "ChangaOne-Regular.ttf", 30 );
 	if( font == NULL )
@@ -150,16 +150,8 @@ bool Texture::loadText1 ( SDL_Renderer* renderer)
     return texture!=NULL;
 
 }
-void Texture::createText1 (int x, int y, SDL_Renderer* renderer)
-{
-    if (loadText1(renderer))
-    {
 
-        render(x, y, renderer);
-    }
-}
-
-bool Texture::loadText2 ( SDL_Renderer* renderer)
+bool Texture::loadText_L ( SDL_Renderer* renderer)
 {
     font = TTF_OpenFont( "ChangaOne-Regular.ttf", 80 );
 	if( font == NULL )
@@ -201,14 +193,6 @@ bool Texture::loadText2 ( SDL_Renderer* renderer)
 	}
     return texture!=NULL;
 
-}
-void Texture::createText2 (int x, int y, SDL_Renderer* renderer)
-{
-    if (loadText2(renderer))
-    {
-
-        render(x, y, renderer);
-    }
 }
 
 

@@ -5,10 +5,10 @@ using namespace std;
 Dino::Dino()
 {
 
-    dino_x = 330;
-    dino_y = 390;
+    dino_x = DINO_X;
+    dino_y = DINO_Y;
 
-    collision = {getX() + 20, getY() + 20, 68, 77 };
+    collision = {getX(), getY(), 68, 77 };
 
     for (int i=0; i<RUN_FRAME; i++)
     {
@@ -31,7 +31,7 @@ bool Dino::loadFromFile(string path, SDL_Renderer* renderer)
     return res;
 }
 
-void Dino::HandleInput(SDL_Event& event)
+void Dino::handleInput(SDL_Event& event)
 {
     if (event.type == SDL_KEYDOWN && event.key.repeat == 0)
     {
@@ -42,6 +42,7 @@ void Dino::HandleInput(SDL_Event& event)
             {
                 y_val -=15;
                 ground = false;
+
             }
             break;
         }
@@ -61,7 +62,7 @@ void Dino::HandleInput(SDL_Event& event)
     }
 }
 
-void Dino::Gravity()
+void Dino::gravity()
 {
     if (!ground)
     {
@@ -109,18 +110,21 @@ bool Dino::checkCollision(SDL_Rect a, SDL_Rect b)
 
 	return true;
 }
-void Dino::Update(Obs* obs)
+void Dino::update(vector <Obs*>& obsList)
 {
-    Gravity();
+    gravity();
     dino_y += y_val;
 
-    collision.y = getY() + 20;
+    collision.y = getY();
 
+    for (int i=0; i<obsList.size(); i++)
+    {
 
-        if (checkCollision(collision, obs->getCollision()))
+        if (checkCollision(collision, obsList.at(i)->getCollision()))
         {
             death = true;
         }
+    }
         if (dino_y>=390)
         {
             dino_y = 390;
@@ -129,8 +133,9 @@ void Dino::Update(Obs* obs)
         }
 
 
+
 }
-void Dino::Render(SDL_Renderer* renderer)
+void Dino::render(SDL_Renderer* renderer)
 {
     if (!couch && !death)
     {

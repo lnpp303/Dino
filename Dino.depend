@@ -34,8 +34,7 @@
 	"define.h"
 	"graphics.h"
 
-1715506486 source:e:\linh\uet\ltnc\dino\dino\graphics.cpp
-	"define.h"
+1716013731 source:e:\linh\uet\ltnc\dino\dino\graphics.cpp
 	"graphics.h"
 	<bits/stdc++.h>
 
@@ -49,17 +48,15 @@
 	<SDL_mixer.h>
 	<stdio.h>
 
-1715631909 e:\linh\uet\ltnc\dino\dino\graphics.h
+1716013936 e:\linh\uet\ltnc\dino\dino\graphics.h
 	<SDL.h>
 	<SDL_image.h>
 	<SDL_ttf.h>
 	<SDL_mixer.h>
 	<stdio.h>
 	<bits/stdc++.h>
-	"define.h"
-	"texture.h"
 
-1715860270 source:e:\linh\uet\ltnc\dino\dino\main.cpp
+1716026538 source:e:\linh\uet\ltnc\dino\dino\main.cpp
 	<SDL.h>
 	<SDL_image.h>
 	<SDL_ttf.h>
@@ -67,18 +64,17 @@
 	<stdio.h>
 	<string>
 	<bits/stdc++.h>
-	"define.h"
 	"graphics.h"
 	"texture.h"
 	"dino.h"
 	"obstacle.h"
 
-1715628794 e:\linh\uet\ltnc\dino\dino\texture.h
+1716026563 e:\linh\uet\ltnc\dino\dino\texture.h
 	<SDL_ttf.h>
 	<bits/stdc++.h>
-	"define.h"
+	"graphics.h"
 
-1715695345 source:e:\linh\uet\ltnc\dino\dino\texture.cpp
+1716016740 source:e:\linh\uet\ltnc\dino\dino\texture.cpp
 	"texture.h"
 	<bits/stdc++.h>
 
@@ -88,22 +84,20 @@
 	<stdio.h>
 	<string>
 
-1715854864 e:\linh\uet\ltnc\dino\dino\dino.h
-	"define.h"
+1716013677 e:\linh\uet\ltnc\dino\dino\dino.h
 	"graphics.h"
 	"texture.h"
 	"obstacle.h"
 
-1715854883 source:e:\linh\uet\ltnc\dino\dino\dino.cpp
+1716026538 source:e:\linh\uet\ltnc\dino\dino\dino.cpp
 	"dino.h"
 
-1715861264 source:e:\linh\uet\ltnc\dino\dino\obstacle.cpp
+1716011175 source:e:\linh\uet\ltnc\dino\dino\obstacle.cpp
 	"obstacle.h"
 	<bits/stdc++.h>
 	<cstdlib>
 
-1715853826 e:\linh\uet\ltnc\dino\dino\obstacle.h
-	"define.h"
+1716013677 e:\linh\uet\ltnc\dino\dino\obstacle.h
 	"graphics.h"
 	"texture.h"
 	"dino.h"
@@ -121,15 +115,14 @@
 	"obstacle.h"
 	<bits/stdc++.h>
 
-1715763718 e:\linh\uet\ltnc\dino\dino\menu.h
-	"define.h"
+1716014687 e:\linh\uet\ltnc\dino\dino\menu.h
 	"graphics.h"
 	"texture.h"
 	"dino.h"
 	"obstacle.h"
 	<bits/stdc++.h>
 
-1715763881 source:e:\linh\uet\ltnc\dino\dino\menu.cpp
+1716016123 source:e:\linh\uet\ltnc\dino\dino\menu.cpp
 	"menu.h"
 	<bits/stdc++.h>
 
