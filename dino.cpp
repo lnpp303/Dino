@@ -107,8 +107,9 @@ bool Dino::checkCollision(SDL_Rect a, SDL_Rect b)
 	if (leftA >= rightB) {
 		return false;
 	}
-
 	return true;
+
+
 }
 void Dino::update(vector <Obs*>& obsList)
 {
@@ -123,6 +124,8 @@ void Dino::update(vector <Obs*>& obsList)
         if (checkCollision(collision, obsList.at(i)->getCollision()))
         {
             death = true;
+            Mix_Chunk* collide = dino_sound.loadSound("collide.mp3");
+            dino_sound.play(collide);
         }
     }
         if (dino_y>=390)
@@ -145,6 +148,7 @@ void Dino::render(SDL_Renderer* renderer)
         if (run_cnt >= RUN_FRAME)
         {
             run_cnt =0;
+            score_num++;
         }
     }
     else if (!death)

@@ -45,11 +45,10 @@
 		<ExtraCommands>
 			<Add after="XCOPY $(#sdl2)\bin\*.dll $(TARGET_OUTPUT_DIR) /D /Y" />
 		</ExtraCommands>
-		<Unit filename="define.h" />
+		<Unit filename="audio.cpp" />
+		<Unit filename="audio.h" />
 		<Unit filename="dino.cpp" />
 		<Unit filename="dino.h" />
-		<Unit filename="game.cpp" />
-		<Unit filename="game.h" />
 		<Unit filename="graphics.cpp" />
 		<Unit filename="graphics.h" />
 		<Unit filename="main.cpp" />
@@ -57,7 +56,6 @@
 		<Unit filename="menu.h" />
 		<Unit filename="obstacle.cpp" />
 		<Unit filename="obstacle.h" />
-		<Unit filename="store.h" />
 		<Unit filename="texture.cpp" />
 		<Unit filename="texture.h" />
 		<Extensions>

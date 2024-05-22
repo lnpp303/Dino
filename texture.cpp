@@ -12,28 +12,6 @@ Texture::~Texture() {
 
 }
 
-bool Texture::init(SDL_Renderer* renderer)
-{
-    bool success = true;
-    SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF );
-
-    //Initialize PNG loading
-    int imgFlags = IMG_INIT_PNG;
-    if( !( IMG_Init( imgFlags ) & imgFlags ) )
-    {
-        printf( "SDL_image could not initialize! SDL_image Error: %s\n", IMG_GetError() );
-        success = false;
-    }
-
-    //Initialize SDL_ttf
-    if( TTF_Init() == -1 )
-    {
-        printf( "SDL_ttf could not initialize! SDL_ttf Error: %s\n", TTF_GetError() );
-        success = false;
-    }
-    return success;
-}
-
 void Texture::free() {
     if (texture!=NULL) {
         SDL_DestroyTexture(texture);

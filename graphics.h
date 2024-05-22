@@ -9,7 +9,7 @@
 #include <SDL_mixer.h>
 #include <stdio.h>
 #include <bits/stdc++.h>
-
+#include "audio.h"
 using namespace std;
 
 const int SCREEN_WIDTH = 1024;

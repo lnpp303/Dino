@@ -6,7 +6,7 @@
 #include "graphics.h"
 #include "texture.h"
 #include "obstacle.h"
-
+#include "audio.h"
 using namespace std;
 
 class Obs;
@@ -31,19 +31,26 @@ public:
     void update(vector <Obs*>& obsList);
     float getX() const {return dino_x;};
     float getY() const {return dino_y;};
-    bool isDeath() const {return death;};
-    void render(SDL_Renderer* renderer);
+    bool isDeath() const
+    {
+        return death;
 
+    }
+    void render(SDL_Renderer* renderer);
+    bool death = false;int score_num = 0;
 private:
+    Audio dino_sound;
     float dino_x = 0;
     float dino_y = 0;
 
     float y_val = 0;
 
+
+
     bool jump = false;
     bool couch = false;
     //bool fall = false;
-    bool death = false;
+
     bool ground = true;
 
     SDL_Rect runClips[RUN_FRAME];

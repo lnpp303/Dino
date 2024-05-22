@@ -14,14 +14,11 @@ class Texture {
 public:
 
     Texture();
-    //dellocate memory
     ~Texture();
     //dellocate texture
     void free();
-    bool init(SDL_Renderer* renderer);
     virtual bool loadFromFile(string path, SDL_Renderer* renderer);
 
-    //render texture at a given point
     void render (int x, int y, SDL_Renderer* renderer);
     int getWidth() {return w_texture;}
     int getHeight() {return h_texture;}
@@ -32,8 +29,6 @@ public:
 
     void setText(string text) {str_val=text;};
     void setColor(int type);
-    void createText_S (int x, int y, SDL_Renderer* renderer);
-    void createText_L (int x, int y, SDL_Renderer* renderer);
 
 private:
     SDL_Texture* texture;

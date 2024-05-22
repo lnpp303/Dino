@@ -34,7 +34,7 @@
 	"define.h"
 	"graphics.h"
 
-1716013731 source:e:\linh\uet\ltnc\dino\dino\graphics.cpp
+1716341322 source:e:\linh\uet\ltnc\dino\dino\graphics.cpp
 	"graphics.h"
 	<bits/stdc++.h>
 
@@ -48,15 +48,16 @@
 	<SDL_mixer.h>
 	<stdio.h>
 
-1716013936 e:\linh\uet\ltnc\dino\dino\graphics.h
+1716314880 e:\linh\uet\ltnc\dino\dino\graphics.h
 	<SDL.h>
 	<SDL_image.h>
 	<SDL_ttf.h>
 	<SDL_mixer.h>
 	<stdio.h>
 	<bits/stdc++.h>
+	"audio.h"
 
-1716026538 source:e:\linh\uet\ltnc\dino\dino\main.cpp
+1716341635 source:e:\linh\uet\ltnc\dino\dino\main.cpp
 	<SDL.h>
 	<SDL_image.h>
 	<SDL_ttf.h>
@@ -68,13 +69,14 @@
 	"texture.h"
 	"dino.h"
 	"obstacle.h"
+	"audio.h"
 
-1716026563 e:\linh\uet\ltnc\dino\dino\texture.h
+1716341146 e:\linh\uet\ltnc\dino\dino\texture.h
 	<SDL_ttf.h>
 	<bits/stdc++.h>
 	"graphics.h"
 
-1716016740 source:e:\linh\uet\ltnc\dino\dino\texture.cpp
+1716341322 source:e:\linh\uet\ltnc\dino\dino\texture.cpp
 	"texture.h"
 	<bits/stdc++.h>
 
@@ -84,12 +86,13 @@
 	<stdio.h>
 	<string>
 
-1716013677 e:\linh\uet\ltnc\dino\dino\dino.h
+1716339916 e:\linh\uet\ltnc\dino\dino\dino.h
 	"graphics.h"
 	"texture.h"
 	"obstacle.h"
+	"audio.h"
 
-1716026538 source:e:\linh\uet\ltnc\dino\dino\dino.cpp
+1716303034 source:e:\linh\uet\ltnc\dino\dino\dino.cpp
 	"dino.h"
 
 1716011175 source:e:\linh\uet\ltnc\dino\dino\obstacle.cpp
@@ -97,10 +100,11 @@
 	<bits/stdc++.h>
 	<cstdlib>
 
-1716013677 e:\linh\uet\ltnc\dino\dino\obstacle.h
+1716314880 e:\linh\uet\ltnc\dino\dino\obstacle.h
 	"graphics.h"
 	"texture.h"
 	"dino.h"
+	"audio.h"
 	<bits/stdc++.h>
 
 1715588884 source:e:\linh\uet\ltnc\dino\dino\game.cpp
@@ -124,5 +128,15 @@
 
 1716016123 source:e:\linh\uet\ltnc\dino\dino\menu.cpp
 	"menu.h"
+	<bits/stdc++.h>
+
+1716340898 source:e:\linh\uet\ltnc\dino\dino\audio.cpp
+	"audio.h"
+
+1716340883 e:\linh\uet\ltnc\dino\dino\audio.h
+	<SDL_image.h>
+	<SDL_ttf.h>
+	<SDL_mixer.h>
+	<stdio.h>
 	<bits/stdc++.h>
 

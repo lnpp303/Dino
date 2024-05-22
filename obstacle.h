@@ -7,11 +7,11 @@
 #include "graphics.h"
 #include "texture.h"
 #include "dino.h"
-
+#include "audio.h"
 #include <bits/stdc++.h>
 using namespace std;
 
-class Obs : Texture {
+class Obs : Texture  {
 public:
     Obs(int x, int y);
     ~Obs();
