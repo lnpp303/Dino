@@ -61,9 +61,6 @@ void Audio::play(Mix_Chunk* chunk)
         {
             switch( audio_e.key.keysym.sym )
             {
-                case SDLK_UP:
-                Mix_PlayChannel( -1, jump, 0 );
-                break;
 
                 case SDLK_SPACE:
                      if( Mix_PausedMusic() == 1 )

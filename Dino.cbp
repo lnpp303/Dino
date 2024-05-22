@@ -52,8 +52,6 @@
 		<Unit filename="graphics.cpp" />
 		<Unit filename="graphics.h" />
 		<Unit filename="main.cpp" />
-		<Unit filename="menu.cpp" />
-		<Unit filename="menu.h" />
 		<Unit filename="obstacle.cpp" />
 		<Unit filename="obstacle.h" />
 		<Unit filename="texture.cpp" />

@@ -38,13 +38,30 @@ void Dino::handleInput(SDL_Event& event)
         switch (event.key.keysym.sym)
         {
         case SDLK_UP:
-            if (ground)
             {
+                if (ground)
+                {
                 y_val -=15;
                 ground = false;
 
+                }
+                break;
             }
-            break;
+
+            case SDLK_p:
+            {
+                if (pause == false)
+                {
+                    pause = true;
+                    break;
+                }
+                else
+                {
+                    pause = false;
+                    break;
+                }
+            }
+
         }
 
     }
@@ -66,6 +83,8 @@ void Dino::gravity()
 {
     if (!ground)
     {
+        audio_jump= dino_jump.loadSound("jump.wav");
+        dino_jump.play(audio_jump);
         y_val += GRAVITY;
         if (y_val>=MAX_GRAVITY)
         {
@@ -115,7 +134,6 @@ void Dino::update(vector <Obs*>& obsList)
 {
     gravity();
     dino_y += y_val;
-
     collision.y = getY();
 
     for (int i=0; i<obsList.size(); i++)
@@ -124,8 +142,9 @@ void Dino::update(vector <Obs*>& obsList)
         if (checkCollision(collision, obsList.at(i)->getCollision()))
         {
             death = true;
-            Mix_Chunk* collide = dino_sound.loadSound("collide.mp3");
-            dino_sound.play(collide);
+            audio_collide = dino_collide.loadSound("collide.mp3");
+            dino_collide.play(audio_collide);
+
         }
     }
         if (dino_y>=390)
@@ -164,16 +183,11 @@ void Dino::render(SDL_Renderer* renderer)
 
 }
 
+void Dino::close()
+{
+    Mix_FreeChunk(audio_jump);
+    Mix_FreeChunk(audio_collide);
+}
 
 
-
-/*case SDLK_DOWN:
-            couch =true;
-            dino_y = 390;
-            break;
-case SDLK_DOWN:
-            couch =true;
-            dino_y = 390;
-            break;
-*/
 

@@ -57,7 +57,7 @@
 	<bits/stdc++.h>
 	"audio.h"
 
-1716341635 source:e:\linh\uet\ltnc\dino\dino\main.cpp
+1716366367 source:e:\linh\uet\ltnc\dino\dino\main.cpp
 	<SDL.h>
 	<SDL_image.h>
 	<SDL_ttf.h>
@@ -86,13 +86,13 @@
 	<stdio.h>
 	<string>
 
-1716339916 e:\linh\uet\ltnc\dino\dino\dino.h
+1716357600 e:\linh\uet\ltnc\dino\dino\dino.h
 	"graphics.h"
 	"texture.h"
 	"obstacle.h"
 	"audio.h"
 
-1716303034 source:e:\linh\uet\ltnc\dino\dino\dino.cpp
+1716365946 source:e:\linh\uet\ltnc\dino\dino\dino.cpp
 	"dino.h"
 
 1716011175 source:e:\linh\uet\ltnc\dino\dino\obstacle.cpp
@@ -130,7 +130,7 @@
 	"menu.h"
 	<bits/stdc++.h>
 
-1716340898 source:e:\linh\uet\ltnc\dino\dino\audio.cpp
+1716352658 source:e:\linh\uet\ltnc\dino\dino\audio.cpp
 	"audio.h"
 
 1716340883 e:\linh\uet\ltnc\dino\dino\audio.h

@@ -37,9 +37,15 @@ public:
 
     }
     void render(SDL_Renderer* renderer);
-    bool death = false;int score_num = 0;
+    bool death = false;
+    bool pause = false;
+    int score_num = 0;
+    Audio dino_jump;
+    Audio dino_collide;
+    Mix_Chunk* audio_jump;
+    Mix_Chunk* audio_collide;
+    void close();
 private:
-    Audio dino_sound;
     float dino_x = 0;
     float dino_y = 0;
 
@@ -49,8 +55,6 @@ private:
 
     bool jump = false;
     bool couch = false;
-    //bool fall = false;
-
     bool ground = true;
 
     SDL_Rect runClips[RUN_FRAME];

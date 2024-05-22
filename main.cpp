@@ -23,6 +23,8 @@ int main (int argc, char* argv[]) {
     Graphics graphics;
     Texture background;
     Texture score; Texture score_cnt;
+    Texture hscore; Texture hscore_cnt;
+
     Dino player;
 
     Audio menu_audio;
@@ -30,9 +32,12 @@ int main (int argc, char* argv[]) {
 
 
     int scolingOffset=0;
-    bool isRunning=true; SDL_Event e;
+    int high_score=0;
+    bool isRunning=true;
     bool isMenu=true;
 
+
+    SDL_Event e;
 
     if (!graphics.init())
     {
@@ -56,14 +61,14 @@ int main (int argc, char* argv[]) {
     SDL_Rect text_pos[menuItem];
 
     menu_text[0].setText("Play"); menu_text[0].setColor(BLACK);
-    button_pos[0].x=400; button_pos[0].y=280; button_pos[0].w=196; button_pos[0].h=84;
-    text_pos[0].x=470; text_pos[0].y=300; text_pos[0].w=196; text_pos[0].h=84;
+    button_pos[0].x=250; button_pos[0].y=280; button_pos[0].w=196; button_pos[0].h=84;
+    text_pos[0].x=320; text_pos[0].y=300; text_pos[0].w=196; text_pos[0].h=84;
 
     menu_text[1].setText("Quit"); menu_text[1].setColor(BLACK);
-    button_pos[1].x=400; button_pos[1].y=370; button_pos[1].w=196; button_pos[1].h=84;
-    text_pos[1].x=470; text_pos[1].y=390; text_pos[1].w=196; text_pos[1].h=84;
+    button_pos[1].x=600; button_pos[1].y=280; button_pos[1].w=196; button_pos[1].h=84;
+    text_pos[1].x=670; text_pos[1].y=300; text_pos[1].w=196; text_pos[1].h=84;
 
-    menu_text[2].setText("DINASOUR"); menu_text[2].setColor(BLACK);
+    menu_text[2].setText("DINOSAUR"); menu_text[2].setColor(BLACK);
     text_pos[2].x=320; text_pos[2].y=160; text_pos[2].w=196; text_pos[2].h=84;
 
     if (!menu_back.loadFromFile("menu.png", graphics.renderer)
@@ -79,6 +84,14 @@ int main (int argc, char* argv[]) {
     if (!score.loadText_S(graphics.renderer))
     {
         cout<<"LOAD SCORE ERROR"<<endl;
+        return -1;
+    }
+
+    hscore.setText("High score: "); hscore.setColor(WHITE);
+
+    if (!hscore.loadText_S(graphics.renderer))
+    {
+        cout<<"LOAD HIGH SCORE ERROR"<<endl;
         return -1;
     }
 
@@ -111,10 +124,15 @@ int main (int argc, char* argv[]) {
             {
                 isMenu = false;
             }
+
         SDL_RenderClear(graphics.renderer);
         menu_back.render(0, 0, graphics.renderer);
         menu_button[0].render(button_pos[0].x, button_pos[0].y, graphics.renderer);
         menu_button[1].render(button_pos[1].x, button_pos[1].y, graphics.renderer);
+        score.render(320, 380 , graphics.renderer);
+        score_cnt.render(420, 380, graphics.renderer);
+        hscore.render(650, 380, graphics.renderer);
+        hscore_cnt.render(820, 380, graphics.renderer);
 
         for (int i=0; i<menuItem; i++)
         {
@@ -175,15 +193,18 @@ int main (int argc, char* argv[]) {
                                     {
                                         isRunning = false;
                                     }
-
                                     player.handleInput(e);
-
+                                }
+                                while (player.pause)
+                                {
+                                    SDL_PollEvent(&e);
+                                    player.handleInput(e);
                                 }
 
                                 SDL_RenderClear(graphics.renderer);
                                 int frame_start = SDL_GetTicks();
 
-                                scolingOffset-= 15; // tăng tốc back
+                                scolingOffset-= 15;
                                 if (scolingOffset < -background.getWidth())
                                 {
                                     scolingOffset = 0;
@@ -192,6 +213,7 @@ int main (int argc, char* argv[]) {
                                 background.render(scolingOffset+background.getWidth(),0, graphics.renderer);
 
                                 score.render(SCREEN_WIDTH/2 - 50, 10, graphics.renderer);
+                                hscore.render(SCREEN_WIDTH - 200, 8, graphics.renderer);
                                 for (int i=0; i<5; i++)
                                 {
                                     if (obsList.at(i) != NULL)
@@ -220,6 +242,8 @@ int main (int argc, char* argv[]) {
                                 }
                                 player.update(obsList);
                                 player.render(graphics.renderer);
+
+                                //score
                                string score_str = to_string(( player.score_num));
                                score_cnt.setText(score_str); score_cnt.setColor(WHITE);
                                if (!score_cnt.loadText_S(graphics.renderer))
@@ -229,13 +253,30 @@ int main (int argc, char* argv[]) {
                                }
                                score_cnt.render(SCREEN_WIDTH/2+50, 10, graphics.renderer);
 
+                               //high score
+                               string highscore_str = to_string(( high_score));
+                               hscore_cnt.setText(highscore_str); hscore_cnt.setColor(WHITE);
+                                if (!hscore_cnt.loadText_S(graphics.renderer))
+                               {
+                                   cout << "Load text error" <<endl;
+                                   return -1;
+                               }
+                               hscore_cnt.render(SCREEN_WIDTH - 40, 8, graphics.renderer);
+
                                 if (player.isDeath())
                                 {
+
                                     Mix_HaltMusic();
                                     menu_audio.play(menu_music);
+
+                                    if (player.score_num> high_score)
+                                    {
+                                         high_score=player.score_num;
+                                    }
                                     player.score_num=0;
                                     isRunning = false;
                                     isMenu=true;
+
                                     player.death =false;
                                     obsList.clear();
 
@@ -258,7 +299,7 @@ int main (int argc, char* argv[]) {
                                 SDL_RenderPresent(graphics.renderer);
                                 int frame_end = SDL_GetTicks();
                                 int real_time = frame_end-frame_start;
-                                int fps = 1000 / 30; // Muốn tăng tốc game thì tăng cái mẫu Thường cái này cố định
+                                int fps = 1000 / 30;
                                 if (fps > real_time)
                                 {
                                     SDL_Delay(fps-real_time);
@@ -291,9 +332,12 @@ int main (int argc, char* argv[]) {
     }
     score.free();
     score_cnt.free();
+    hscore.free();
+    hscore_cnt.free();
 
     Mix_FreeMusic(game_music);
     Mix_FreeMusic(menu_music);
+    player.close();
     return 0;
 }
 
